@@ -1,0 +1,392 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+a, a:link, a:visited, a:active {
+  color: #17a554;
+  border-bottom: 1px dotted rgba(23, 165, 84, .5);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #17a554;
+}
+
+#olympic-wrapper {
+	padding: 50px 25px;
+	width: 2000px;
+}
+
+.olympic-section-wrapper {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.head-title-wrapper {
+	margin-right: 25px;
+}
+
+#olympic-top-title,
+#olympic-legend-title {
+	font-weight: 400;
+	text-align: right;
+	color: #191919;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+
+#olympic-top-title {
+	font-size: 30px;
+	line-height: 32px;
+	width: 200px;
+}
+
+#olympic-legend-title {
+	font-size: 24px;
+	line-height: 26px;
+	width: 175px;
+    margin-left: 25px;
+}
+
+#olympic-top-subtitle {
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 24px;
+	width: 175px;
+	text-align: right;
+	color: #17a554;
+	margin-top: 5px;
+	margin-left: 25px;
+}
+
+#olympic-introduction {
+	width: 950px;
+	line-height: 20px;
+}
+
+#olympic-feather-legend {
+	width: 575px;
+	line-height: 20px;
+}
+
+#olympic-introduction p,
+#olympic-feather-legend p {
+	font-weight: 400;
+	font-size: 12px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	color: #171717;
+}
+
+#olympic-introduction .bold-start,
+#olympic-feather-legend .bold-start {
+	font-weight: 500;
+	color: black;
+}
+
+#olympic-introduction .visual-note {
+	font-style: italic;
+	color: #a2a2a2;
+	font-weight: 300;
+}
+
+/* legend divs */
+
+#olympic-legend-visual-wrapper {
+	display: inline-block;
+	text-align: center;
+}
+
+#olympic-chart-legend {
+	width: 400px;
+}
+
+/* credits */
+
+#credits {
+	margin-top: 25px;
+}
+
+.credit-bold {
+	font-weight: 500;
+	font-size: 14px;
+	color: #191919;
+}
+
+.credit-divider {
+	color: #b7b7b7;
+	font-weight: 500;
+	font-size: 14px;
+	padding: 0px 10px;
+}
+
+.credit-note {
+	margin-top: 5px;
+	font-size: 12px;
+	font-weight: 400;
+	color: #656565;
+}
+
+/* tooltip */
+
+#tooltip,
+#tooltip-edition-wrapper {
+  text-align: center;  
+  z-index: 1000;
+  position: absolute;
+  opacity: 0;
+}
+
+#tooltip-container,
+#tooltip-edition-container {
+  position: absolute;
+  bottom: 0;
+  width: 250px;
+  left: -125px; /* 250/2 */
+  line-height: 16px;
+  padding: 10px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.2);  
+  border: 1px solid rgba(200,200,200,0.5);
+  cursor: default;
+  pointer-events: none;
+}
+
+#tooltip-edition-container {
+	width: 110px;
+  	left: -55px; /* 150/2 */
+  	padding: 5px 5px;
+}
+
+#tooltip .tooltip-event {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #333333;
+  margin-top: 5px;
+  text-align: center;
+  font-weight: 500;  
+}
+
+#tooltip .tooltip-rule {
+  height: 1px;
+  margin: 1px auto 3px;
+  background: #d1d1d1;
+  width: 200px;
+}
+
+#tooltip .tooltip-discipline {
+  color: #a2a2a2;
+  font-size: 12px;   
+  margin-bottom: 6px;  
+  font-weight: 300;
+}
+
+#tooltip-athlete {
+  margin-top: 15px;
+  color: #171717;
+  font-size: 14px;
+}
+
+#tooltip-country {
+  margin-top: 1px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#tooltip-record {
+  color: #848484;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+#tooltip-edition {
+  margin-top: 5px;
+  color: #5f5f5f;
+  font-size: 11px;
+}
+
+#tooltip-edition-edition {
+  	color: #7f7f7f;
+  	font-size: 9px;
+}
+
+#tooltip-edition-city {
+	line-height: 1;
+  	margin-top: 5px;
+  	font-size: 11px;
+  	font-weight: 500;
+  	text-transform: uppercase;
+}
+
+#tooltip-edition-continent {
+  	color: #5f5f5f;
+  	font-size: 10px;
+}
+
+/* chart */ 
+
+#olympic-chart {
+	margin-top: 50px;
+	margin-bottom: 75px;
+}
+
+.discipline-title {
+	/*font-size: 11px;*/
+	font-weight: 400;
+}
+
+.time-line {
+	stroke: white;
+	stroke-width: 2px;
+	pointer-events: none;
+}
+
+.year-outline {
+	fill: white;
+	pointer-events: none;
+}
+
+.war-arc {
+	fill: white;
+	pointer-events: none;
+}
+
+.city-arc {
+	fill: #d2d2d2;
+	opacity: 0;
+	stroke: none;
+	pointer-events: all;
+}
+
+/* chart axis */
+
+.time-axis-outer-years {
+	font-size: 13px;
+	fill: #191919;
+	text-anchor: middle;
+	pointer-events: none;
+}
+
+.time-axis-small-year {
+	font-size: 8px;
+	fill: #9b9b9b;
+	text-anchor: middle;
+	pointer-events: none;
+}
+
+.time-axis-marker {
+	stroke: #9e9e9e;
+	stroke-width: 1px;
+	pointer-events: none;
+}
+
+/* chart annotations */
+
+.annotation-wrapper {
+	pointer-events: none;
+}
+
+.annotation-circle {
+	fill: white;
+	stroke: black;
+	stroke-width: 2px;
+}
+
+.annotation-text-title {
+	font-size: 16px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.annotation-text {
+	font-size: 12px;
+}
+
+/* the other sports chart */
+
+.other-sports-title {
+	font-size: 18px;
+	margin-top: 15px;
+	fill: #191919;
+	font-weight: 500;
+}
+
+.discipline-other-label {
+	text-anchor: end;
+	font-size: 11px;
+	font-weight: 400;
+}
+
+.edition-other-label {
+	text-anchor: start;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.other-sports-note {
+	fill: #979797;
+	font-size: 11px;
+	font-weight: 400;
+}
+
+/* legend charts */
+
+.legend-title {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.discipline-label-legend {
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.gender-text {
+	font-size: 11px;
+	fill: #9a9a9a;
+}
+
+.legend-annotation-year {
+	font-size: 11px;
+	fill: #9a9a9a;
+}
+
+.legend-annotation-line {
+	stroke: #acacac;
+	stroke-width: 1px;
+	stroke-dasharray: 3 3;
+}
+
+.legend-annotation-start-line {
+	stroke: #acacac;
+	stroke-width: 1.5px;
+}
+
+.olympic-circle {
+	stroke-width: 4px;
+	fill: none;
+	mix-blend-mode: multiply;
+}
+
+.olympic-circle-text {
+	font-size: 11px;
+	text-anchor: middle;
+}
+
+.record-legend-line {
+	stroke: #7d7d7d;
+}
+
+.record-legend-text {
+	text-anchor: end;
+	font-size: 10px;
+	fill: #9a9a9a;
+}

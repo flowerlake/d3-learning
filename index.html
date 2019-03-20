@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>indexHtml</title>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+<p style="color:#1181B8;"> this is a d3 test3.</p>
+<div>
+    <p style="color:#ff3399;"> this is a d3 test.</p>
+
+    <p style="color:#0000cc;"> this is a d3 test2.</p>
+
+</div>
+<!--svg共预定义了7种形状元素，分别为rect、circle、ellipse、line、polyline、polygon、path -->
+<svg width="600" height="600" version="1.0" xmlns="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <!--r为圆的半径-->
+    <circle r="80" cx="150" cy="150" style="fill:yellow; stroke: black; stroke-width:4px "></circle>
+    <path d="M 100,100 L270,300" style="stroke: black; stroke-width: 120px"></path>
+</svg>
+
+</body>
+<script>
+    var paragraph = document.getElementsByTagName("p");
+    // paragraph[0].innerHTML = "hello d3";
+    // console.log(paragraph);
+    // for (var i=0;i<paragraph.length;i++){
+    //     var para = paragraph.item(i);
+    //     para.innerHTML = "hello world";
+    //     para.style.setProperty("color","black",null);
+    // }
+    // d3.selectAll("p").style("color","white","black");
+    // d3.select("body").transition()
+    //     .style("background-color", "black");
+
+
+    d3.selectAll("p")
+    // function（d,i）中的i和d则分别是当前正在执行函数的元素的序号和对应的data值（不是元素内容，而是data方法绑定的值）
+        .style("color", function (d, i) {
+            // js中的三目运算符，为true时执行前一句，为false时执行后一句
+            return i % 2 ? "#ff3399" : "#0000cc";
+        })
+
+
+    d3.selectAll("p")
+    //Computed properties often refer to bound data. Data is specified as an array of values, and each value is passed as the first argument (d) to selection functions.
+    // 计算的属性通常会引用绑定的数据，数据被指定为值数组，每个值作为第一个参数（d）传递给选择函数。使用默认的索引连接，数据数组中的第一个元素将传递给选择中的第一个节点，第二个元素传递给第二个节点，依此类推。
+        .data([20, 48, 36])
+        // function (d)绑定的是data数据对象，返回的是数据对象+"px"。
+        .style("font-size", function (d) {
+            console.log(d);
+            return d + "px";
+        })
+
+    // d3.selectAll("circle").transition()
+    //     .duration(750)
+    //     .delay(function (d,i) {return i*10;})
+    //     .attr("r", function (d) { return Math.sqrt(d);});
+    var p = d3.selectAll("div p")
+    p.datum("test")
+        .append("span")
+        .text(function (d, i) {
+            return d + " " + i;
+        })
+
+    // .text("hello world");
+    // .seclectAll("p")
+
+</script>
+</html>

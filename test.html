@@ -1,0 +1,83 @@
+<html>
+<head><title>Canvas Halftoning</title></head>
+<body>
+<canvas id="c"></canvas>
+<img id="s"/>
+</body>
+<script type="text/javascript">
+    var interval = 8;
+    var angles = {y: 108, m: 162, c: 90, k: 45};
+    var img = new Image();
+    img.onload = halftone;
+    img.src = document.getElementById('s').src;
+
+    function halftone() {
+        var c = document.getElementById('c');
+        var w = c.width = img.width;
+        var h = c.height = img.height;
+        var display = c.getContext('2d');
+        display.fillStyle = '#fff';
+        display.fillRect(0, 0, img.width, img.height);
+
+        var drawColor = function (interval, color, degree) {
+            var rad = (degree % 90) * Math.PI / 180;
+            var sinr = Math.sin(rad), cosr = Math.cos(rad);
+            var ow = w * cosr + h * sinr;
+            var oh = h * cosr + w * sinr;
+            // source
+            var c = document.createElement('canvas');
+            c.width = ow + interval;
+            c.height = oh + interval;  // add margins to avoid getImageData's out of range errors
+            var source = c.getContext('2d');
+            source.translate(0, w * sinr);
+            source.rotate(-rad);
+            source.drawImage(img, 0, 0);
+            // positioning
+            display.translate(w * sinr * sinr, -w * sinr * cosr);
+            display.rotate(rad);
+            display.fillStyle = (function () {
+                if (color == 'k') return 'rgba(0,0,0,0.66)';
+                else if (color == 'c') return 'rgba(0,255,255,0.66)';
+                else if (color == 'm') return 'rgba(255,0,255,0.66)';
+                else if (color == 'y') return 'rgba(255,255,0,0.66)';
+            })();
+            for (var y = 0; y < oh; y += interval) {
+                for (var x = 0; x < ow; x += interval) {
+                    var pixels = source.getImageData(x, y, interval, interval).data;
+                    var sum = 0, count = 0;
+                    for (var i = 0; i < pixels.length; i += 4) {
+                        if (pixels[i + 3] == 0) continue;
+                        var r = 255 - pixels[i];
+                        var g = 255 - pixels[i + 1];
+                        var b = 255 - pixels[i + 2];
+                        var k = Math.min(r, g, b);
+                        if (color != 'k' && k == 255) sum += 0;
+                        else if (color == 'k') sum += k / 255;
+                        else if (color == 'c') sum += (r - k) / (255 - k);
+                        else if (color == 'm') sum += (g - k) / (255 - k);
+                        else if (color == 'y') sum += (b - k) / (255 - k);
+                        count++;
+                    }
+                    if (count == 0) continue;
+                    var rate = sum / count;
+                    display.save();
+                    display.beginPath();
+                    display.moveTo(x, y);
+                    display.lineTo(x + interval, y);
+                    display.lineTo(x + interval, y + interval);
+                    display.lineTo(x, y + interval);
+                    display.clip();
+                    display.beginPath();
+                    display.arc(x + (interval / 2), y + (interval / 2), Math.SQRT1_2 * interval * rate, 0, Math.PI * 2, true);
+                    display.fill();
+                    display.restore();
+                }
+            }
+            // reset
+            display.rotate(-rad);
+            display.translate(-w * sinr * sinr, w * sinr * cosr);
+        }
+        for (var key in angles) drawColor(interval, key, angles[key]);
+    }
+</script>
+</html>
